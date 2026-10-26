@@ -1,0 +1,206 @@
+[
+  {
+    "t": "b",
+    "u": "https://cn.bing.com/search?ensearch=1&q={{{s}}}"
+  },
+  {
+    "t": "bl",
+    "u": "https://search.bilibili.com/all?keyword={{{s}}}"
+  },
+  {
+    "t": "y",
+    "u": "https://www.youtube.com/results?search_query={{{s}}}"
+  },
+  {
+    "t": "yt",
+    "u": "https://www.youtube.com/results?search_query={{{s}}}"
+  },
+  {
+    "t": "w",
+    "u": "https://en.wikipedia.org/wiki/Special:Search?search={{{s}}}"
+  },
+  {
+    "t": "wiki",
+    "u": "https://en.wikipedia.org/wiki/Special:Search?search={{{s}}}"
+  },
+  {
+    "t": "g",
+    "u": "https://github.com/search?type=repositories&q={{{s}}}"
+  },
+  {
+    "t": "gh",
+    "u": "https://github.com/search?type=repositories&q={{{s}}}"
+  },
+  {
+    "t": "git",
+    "u": "https://github.com/search?type=repositories&q={{{s}}}"
+  },
+  {
+    "t": "gu",
+    "u": "https://github.com/{{{s}}}"
+  },
+  {
+    "t": "gr",
+    "u": "https://github.com/{{{s}}}"
+  },
+  {
+    "t": "t",
+    "u": "https://x.com/search?q={{{s}}}"
+  },
+  {
+    "t": "tw",
+    "u": "https://x.com/search?q={{{s}}}"
+  },
+  {
+    "t": "bd",
+    "u": "https://www.baidu.com/s?wd={{{s}}}"
+  },
+  {
+    "t": "baidu",
+    "u": "https://www.baidu.com/s?wd={{{s}}}"
+  },
+  {
+    "t": "tb",
+    "u": "https://s.taobao.com/search?q={{{s}}}"
+  },
+  {
+    "t": "taobao",
+    "u": "https://s.taobao.com/search?q={{{s}}}"
+  },
+  {
+    "t": "jd",
+    "u": "http://search.jd.com/Search?keyword={{{s}}}"
+  },
+  {
+    "t": "yd",
+    "u": "https://dict.youdao.com/w/eng/{{{s}}}"
+  },
+  {
+    "t": "dict",
+    "u": "https://www.iciba.com/word?w={{{s}}}"
+  },
+  {
+    "t": "gs",
+    "u": "https://scholar.google.com/scholar?q={{{s}}}"
+  },
+  {
+    "t": "xs",
+    "u": "https://scholar.google.com/scholar?q={{{s}}}"
+  },
+  {
+    "t": "gt",
+    "u": "https://translate.google.com/?sl=auto&tl=zh-CN&op=translate&text={{{s}}}"
+  },
+  {
+    "t": "ts",
+    "u": "https://translate.google.com/?sl=auto&tl=zh-CN&op=translate&text={{{s}}}"
+  },
+  {
+    "t": "fy",
+    "u": "https://translate.google.com/?sl=auto&tl=zh-CN&op=translate&text={{{s}}}"
+  },
+  {
+    "t": "docker",
+    "u": "https://hub.docker.com/search?q={{{s}}}"
+  },
+  {
+    "t": "conda",
+    "u": "https://anaconda.org/conda-forge/{{{s}}}"
+  },
+  {
+    "t": "z",
+    "u": "https://www.zhihu.com/search?q={{{s}}}"
+  },
+  {
+    "t": "zh",
+    "u": "https://www.zhihu.com/search?q={{{s}}}"
+  },
+  {
+    "t": "py",
+    "u": "https://pypi.org/search/?q={{{s}}}"
+  },
+  {
+    "t": "pypi",
+    "u": "https://pypi.org/search/?q={{{s}}}"
+  },
+  {
+    "t": "np",
+    "u": "https://numpy.org/doc/stable/search.html?q={{{s}}}"
+  },
+  {
+    "t": "numpy",
+    "u": "https://numpy.org/doc/stable/search.html?q={{{s}}}"
+  },
+  {
+    "t": "pd",
+    "u": "https://pandas.pydata.org/docs/search.html?q={{{s}}}"
+  },
+  {
+    "t": "pandas",
+    "u": "https://pandas.pydata.org/docs/search.html?q={{{s}}}"
+  },
+  {
+    "t": "torch",
+    "u": "https://pytorch.org/docs/stable/search.html?q={{{s}}}"
+  },
+  {
+    "t": "pt",
+    "u": "https://pytorch.org/docs/stable/search.html?q={{{s}}}"
+  },
+  {
+    "t": "wf",
+    "u": "https://www.wolframalpha.com/input?i={{{s}}}"
+  },
+  {
+    "t": "math",
+    "u": "https://www.wolframalpha.com/input?i={{{s}}}"
+  },
+  {
+    "t": "db",
+    "u": "https://www.douban.com/search?q={{{s}}}"
+  },
+  {
+    "t": "douban",
+    "u": "https://www.douban.com/search?q={{{s}}}"
+  },
+  {
+    "t": "snap",
+    "u": "https://snapcraft.io/search?q={{{s}}}"
+  },
+  {
+    "t": "flat",
+    "u": "https://flathub.org/apps/search?q={{{s}}}"
+  },
+  {
+    "t": "flathub",
+    "u": "https://flathub.org/apps/search?q={{{s}}}"
+  },
+  {
+    "t": "cnki",
+    "u": "https://kns.cnki.net/kns8s/defaultresult/index?kw={{{s}}}"
+  },
+  {
+    "t": "zw",
+    "u": "https://kns.cnki.net/kns8s/defaultresult/index?kw={{{s}}}"
+  },
+  {
+    "t": "debian",
+    "u": "https://packages.debian.org/search?keywords={{{s}}}"
+  },
+  {
+    "t": "ubuntu",
+    "u": "https://packages.ubuntu.com/search?keywords={{{s}}}"
+  },
+  {
+    "t": "bn",
+    "u": "https://github.com/search?q=repo%3Abinance%2Fbinance-connector-python+{{{s}}}&type=code"
+  },
+  {
+    "t": "forge",
+    "u": "https://github.com/conda-forge/{{{s}}}-feedstock"
+  },
+  {
+    "t": "rss",
+    "u": "https://rss.beauty/rss?url={{{s}}}"
+  }
+]

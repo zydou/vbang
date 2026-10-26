@@ -1,0 +1,55 @@
+[package]
+name = "vbang"
+version = "0.1.0"
+edition = "2024"
+# The floor is the current stable, not a supported version range: nothing but
+# CI and the image builds this binary, and both use the latest toolchain. It is
+# still the budget resolver v3 caps dependency MSRVs at during `cargo update`,
+# so a value that lags the toolchain would quietly hold dependencies back.
+rust-version = "1.99"
+license = "MIT"
+description = "A single-binary DDG-style bang search engine."
+
+[dependencies]
+axum = { version = "0.8", default-features = false, features = ["http1", "json", "query", "tokio"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["rt", "macros", "net"] }
+
+[profile.release]
+# The binary is the whole image, so every byte of it is shipping weight.
+# These flags live here, not in the Dockerfile, so a local
+# `cargo build --release` uses the same profile the image is built with. The
+# target triple still differs: the image is musl-static, a local build is
+# glibc-dynamic.
+#
+# No figures are recorded here. They are one snapshot of one toolchain and
+# rot as a set; the conclusions below stand on their own. To settle a switch,
+# `cargo build --release` and compare.
+#
+# `opt-level = "z"` rather than the default `3`. Left alone, `s` is the
+# smaller choice; once LTO is on the two converge and `z` edges ahead. `s` is
+# not the free option here — it loses once LTO is in.
+opt-level = "z"
+# One codegen unit means the whole crate is one optimisation unit, which is
+# what lets the dead-code and inlining passes reach across modules. Worth it
+# for a build that runs once.
+codegen-units = 1
+# Whole-program optimisation: the biggest of the optimisation levers.
+# `"fat"` and `true` (thin) come out byte-identical for a binary this small —
+# one unit either way — and fat measured faster, so fat it is.
+lto = "fat"
+# A panic aborts instead of unwinding, which buys size for the cost of a
+# panic with no backtrace. It is safe here, because the production code
+# contains no panic path at all — no `unwrap`, no `expect`, no `panic!`
+# outside `#[cfg(test)]` — and the one deliberate failure, a bad `user.json`,
+# exits with code 2 through `std::process::exit`, which does not unwind and so
+# this flag never touches.
+panic = "abort"
+# Strongest of the three values this toolchain accepts (`none`, `debuginfo`,
+# `symbols`); the shipped binary carries no symbol table at all.
+strip = "symbols"
+
+[dev-dependencies]
+http-body-util = "0.1"
+tower = { version = "0.5", features = ["util"] }
