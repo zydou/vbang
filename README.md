@@ -122,7 +122,7 @@ Release profile 五个开关的取舍理由写在 `Cargo.toml` 的注释里：`o
 CI（`.github/workflows/build.yml`）两个 job：
 
 1. **check**：`cargo fmt --check` → `cargo clippy --locked --all-targets -- -D warnings` → `cargo test --locked`，工具链是浮动的 `stable`。不钉 MSRV：没有消费者会在旧工具链上构建这个项目，镜像也用最新工具链，一条只跑 `stable` 的门就够了。
-2. **build**：buildx 构建 `linux/amd64`，推送到 `ghcr.io/zydou/vbang:latest`，构建缓存走 `ghcr.io/zydou/vbang:build-cache`。
+2. **build**：buildx 构建 `linux/amd64`，镜像 tag 和 OCI labels 交给 `docker/metadata-action` 生成，不在 workflow 里手写——`type=sha,prefix=,format=long` 给每次提交打完整 commit sha，`type=semver` 打 `v0.1.0` / `v0.1` / `v0` 三档，`type=ref,event=branch` 给分支名打 tag，`type=raw,value=latest,enable={{is_default_branch}}` 让 `latest` 只随默认分支前进。这个 `enable` 是刻意的：tag push 不推动 `latest`，所以 `v0.1.0` 永远指向它自己的那个 digest，不会等 tag push 结束才能部署，也不会被 main 后来的构建挪走。构建缓存走 `ghcr.io/zydou/vbang:build-cache`。
 
 只推 GHCR，登录用自带的 `GITHUB_TOKEN`；`packages: write` 只挂在 `build` job 上，`check` 只有 `contents: read`。不需要额外 secret。推送只改 `*.md`、`.gitignore`、`.dockerignore` 时会跳过整个工作流。
 
